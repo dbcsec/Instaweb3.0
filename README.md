@@ -7,6 +7,15 @@
 **Industries Served:** HVAC, Plumbing, Roofing, Electrical, Restaurant, Salon, Dental, Landscaping, Automotive, Legal
 **Coverage:** Nationwide (US)
 
+## Monorepo Layout
+
+This is the consolidated Instaweb 3.0 monorepo, combining the main Instaweb site with the Prospector app.
+
+| Directory | Description |
+|-----------|-------------|
+| **Root** (`./`) | Main Instaweb Agency site — landing pages, dashboards, lead intake, API endpoints, data, templates |
+| **`prospector/`** | Prospector app — React/Vite lead prospecting tool (standalone build) |
+
 ## Repository Structure
 
 ```
@@ -22,6 +31,7 @@
 ├── docs/
 │   ├── MIRRORING-PROTOCOL.md    # Mirroring compliance protocol
 │   └── RECOVERY-AUDIT.md        # Sandbox audit & recovery report
+├── prospector/           # Prospector app (React/Vite) — see prospector/README.md
 ├── scripts/
 │   ├── mirror-sync.sh    # Automated mirror sync script
 │   └── monitor-mirror.sh # Mirroring compliance monitor
