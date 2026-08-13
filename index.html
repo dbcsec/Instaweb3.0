@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instaweb — Premium Websites. Nationwide. Disruptive Price.</title>
-  <meta name="description" content="Instaweb delivers $10,000-quality websites for service businesses nationwide at just $399 setup + $248/mo. HVAC, Plumbing, Roofing, Electrical, Restaurant, Salon, Dental, Landscaping, Automotive &amp; Legal — get online fast.">
+  <meta name="description" content="Instaweb builds and hosts professional websites for local service businesses — $399 setup + $99/mo care, with optional local leads and AI receptionist add-ons. HVAC, Plumbing, Roofing, Electrical, Restaurant &amp; more.">
   <meta property="og:title" content="Instaweb — Premium Websites. Nationwide. Disruptive Price.">
-  <meta property="og:description" content="$10,000-quality websites for service businesses nationwide at just $399 setup + $248/mo. Industry-specific design for 10+ service niches.">
+  <meta property="og:description" content="Professional websites for local service businesses — $399 setup + $99/mo care, optional local leads and AI receptionist add-ons. Industry-specific design for 10+ service niches.">
   <meta property="og:image" content="https://www.instaweb.agency/assets/instaweb-og-image.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -899,6 +899,7 @@
       position: relative;
       z-index: 1;
     }
+    .pricing-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
     .pricing-card {
       background: var(--white);
       border: 1px solid var(--gray-200);
@@ -906,6 +907,8 @@
       padding: 40px 36px;
       transition: all 0.4s;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
     .pricing-card:hover {
       transform: translateY(-4px);
@@ -914,10 +917,9 @@
     .pricing-card.featured {
       border-color: var(--primary);
       box-shadow: 0 0 0 1px var(--primary), var(--shadow-lg);
-      transform: scale(1.03);
     }
     .pricing-card.featured:hover {
-      transform: scale(1.03) translateY(-4px);
+      transform: translateY(-4px);
     }
     .pricing-card.featured .pricing-badge {
       position: absolute;
@@ -985,6 +987,8 @@
     .pricing-cta {
       width: 100%;
       justify-content: center;
+      margin-top: auto;
+      white-space: nowrap;
     }
 
     /* ===== TESTIMONIALS ===== */
@@ -1319,6 +1323,7 @@
       .hero-visual { display: none; }
       .vp-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 500px; }
+      .pricing-grid.cols-3 { grid-template-columns: 1fr; }
       .pricing-card.featured { transform: none; }
       .pricing-card.featured:hover { transform: translateY(-4px); }
       .testimonials-grid { grid-template-columns: 1fr; }
@@ -1408,11 +1413,11 @@
           <h1>
             A website your customers<br>
             <span class="gradient-text">actually trust.</span><br>
-            Built in 7 days. $399.
+            Built in 7 days. From $399.
           </h1>
           <p>Done-for-you websites for HVAC, plumbing, dental, legal, and other service businesses. No agency runaround. No DIY mystery. Just a real site that brings in calls.</p>
           <div class="hero-buttons">
-            <a href="https://calendly.com/instaweb-agency/intro-call-instaweb" target="_blank" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> Book a 15-min call &rarr;</a>
+            <a href="mailto:hello@instaweb.agency?subject=Get%20my%20business%20online%20today" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> Email us — get online today &rarr;</a>
             <a href="#demo" class="btn btn-outline btn-lg"><i class="fas fa-eye"></i> See a Sample Site</a>
           </div>
         </div>
@@ -1448,7 +1453,7 @@
               <div class="showcase-price">
                 <div class="showcase-price-left">
                   <span class="showcase-price-label">Starting at</span>
-                  <span class="showcase-price-amount">$399 <span>+ $248/mo</span></span>
+                  <span class="showcase-price-amount">$399 <span>setup + $99/mo care</span></span>
                 </div>
                 <span class="showcase-price-badge">Live in 7 Days</span>
               </div>
@@ -1484,52 +1489,90 @@
     <div class="container">
       <div class="pricing-header">
         <span class="section-tag"><i class="fas fa-tag"></i> Simple Pricing</span>
-        <h2>One <span class="gradient-text">honest price.</span></h2>
+        <h2>Simple <span class="gradient-text">honest pricing.</span></h2>
       </div>
-      <div class="pricing-grid" style="max-width:600px;margin:0 auto;">
-        <div class="pricing-card featured">
-          <span class="pricing-badge">Most Popular</span>
-          <h3><i class="fas fa-infinity"></i> Complete Website Package</h3>
-          <div class="pricing-amount">
+      <!-- Setup & Launch — primary, full-width -->
+      <div class="pricing-grid" style="max-width:900px;margin:0 auto;">
+        <div class="pricing-card featured" style="grid-column:1/-1;">
+          <span class="pricing-badge">Start Here</span>
+          <h3 style="justify-content:center;"><i class="fas fa-rocket"></i> Setup &amp; Launch</h3>
+          <div class="pricing-amount" style="text-align:center;">
             <span class="price">$399 <span>one-time</span></span>
           </div>
-          <p class="pricing-sub">Site built and live in 7 days</p>
-          <ul class="pricing-features">
+          <p class="pricing-sub" style="text-align:center;">Custom site built and live in 7 days.</p>
+          <ul class="pricing-features" style="max-width:560px;margin:0 auto 32px;">
             <li><i class="fas fa-check"></i> Premium industry-specific design</li>
             <li><i class="fas fa-check"></i> Mobile-responsive, fast-loading</li>
             <li><i class="fas fa-check"></i> SEO-optimized for local search</li>
             <li><i class="fas fa-check"></i> Contact forms &amp; call CTAs</li>
             <li><i class="fas fa-check"></i> Custom domain setup</li>
           </ul>
-          <div style="border-top:1px solid var(--border);padding-top:20px;margin-top:20px;">
-            <div class="pricing-amount" style="margin-bottom:4px;">
-              <span class="price">$248 <span>/mo</span></span>
-            </div>
-            <p class="pricing-sub">Hosting, updates, support, small changes anytime</p>
-            <a href="https://buy.stripe.com/8x2bJ09AkfrY5qpbpn48005" class="btn btn-secondary" style="display:inline-block;margin-top:12px;padding:12px 24px;font-size:14px;text-decoration:none;">Subscribe — $249/mo</a>
-          </div>
-          <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--gray-500);">
-            <i class="fas fa-shield-halved"></i> No upsells. No surprise invoices. No "add-ons" for things we promised.
-          </p>
-          <a href="https://buy.stripe.com/6oU4gy4g06Vs8CB1ON48003" class="btn btn-secondary pricing-cta" style="margin-top:20px;"><i class="fas fa-arrow-right"></i> Buy Now — $399</a>
+          <a href="mailto:hello@instaweb.agency?subject=Interested%3A%20Setup%20%26%20Launch%20-%20%24399" class="btn btn-secondary pricing-cta" style="max-width:280px;margin-left:auto;margin-right:auto;"><i class="fas fa-envelope"></i> Start — $399</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== AI RECEPTIONIST ADD-ON ===== -->
-  <section class="section" style="padding:60px 24px;background:var(--dark);">
-    <div class="container" style="text-align:center;">
-      <span class="section-tag" style="margin:0 auto 16px;background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.2);color:var(--accent);">
-        <i class="fas fa-robot"></i> Add-On
-      </span>
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,1.8rem);font-weight:700;margin-bottom:12px;">
-        AI <span class="gradient-text">Receptionist</span>
-      </h2>
-      <p style="color:var(--gray-400);max-width:500px;margin:0 auto 20px;font-size:14px;">
-        Never miss a call. AI answers, qualifies, and books appointments — 24/7.
-      </p>
-      <a href="https://buy.stripe.com/4gM00i8wg1B8aKJ50Z48004" class="btn btn-secondary" style="display:inline-block;padding:14px 36px;font-size:15px;text-decoration:none;">Subscribe — $199/mo</a>
+      <!-- Monthly plans — three equal columns -->
+      <div class="pricing-grid cols-3" style="max-width:900px;margin:24px auto 0;">
+        <div class="pricing-card">
+          <h3><i class="fas fa-shield-halved"></i> Site Care Plan</h3>
+          <div class="pricing-amount">
+            <span class="price">$99 <span>/mo</span></span>
+          </div>
+          <p class="pricing-sub">Hosting, SSL, updates, small edits &amp; support.</p>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Fast, secure hosting &amp; SSL</li>
+            <li><i class="fas fa-check"></i> Updates &amp; maintenance</li>
+            <li><i class="fas fa-check"></i> Unlimited small edits &amp; support</li>
+          </ul>
+          <a href="mailto:hello@instaweb.agency?subject=Interested%3A%20Site%20Care%20Plan%20-%20%2499%2Fmo" class="btn btn-secondary pricing-cta"><i class="fas fa-envelope"></i> Add — $99/mo</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3><i class="fas fa-bullseye"></i> Local Leads</h3>
+          <div class="pricing-amount">
+            <span class="price">$99 <span>/mo</span></span>
+          </div>
+          <p class="pricing-sub">Steady, qualified local leads every month.</p>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Steady local leads monthly</li>
+            <li><i class="fas fa-check"></i> Targeted to your service area</li>
+            <li><i class="fas fa-check"></i> Real, verified prospects</li>
+          </ul>
+          <a href="mailto:hello@instaweb.agency?subject=Interested%3A%20Local%20Leads%20-%20%2499%2Fmo" class="btn btn-secondary pricing-cta"><i class="fas fa-envelope"></i> Add — $99/mo</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3><i class="fas fa-robot"></i> AI Receptionist</h3>
+          <div class="pricing-amount">
+            <span class="price">$199 <span>/mo</span></span>
+          </div>
+          <p class="pricing-sub">24/7 call answering — qualifies and books.</p>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Answers every call, 24/7</li>
+            <li><i class="fas fa-check"></i> Qualifies callers &amp; books appointments</li>
+            <li><i class="fas fa-check"></i> No missed calls after hours</li>
+          </ul>
+          <a href="https://buy.stripe.com/4gM00i8wg1B8aKJ50Z48004" class="btn btn-secondary pricing-cta"><i class="fas fa-arrow-right"></i> Add — $199/mo</a>
+        </div>
+      </div>
+
+      <!-- Everything Bundle — full-width highlight -->
+      <div class="pricing-grid" style="max-width:900px;margin:24px auto 0;">
+        <div class="pricing-card" style="grid-column:1/-1;border:1px solid var(--secondary);background:linear-gradient(135deg, rgba(245,158,11,0.08), rgba(245,158,11,0.02));">
+          <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg, var(--secondary), #d97706);color:var(--white);font-size:12px;font-weight:600;padding:4px 20px;border-radius:100px;text-transform:uppercase;letter-spacing:1px;">Save $148/mo</span>
+          <h3 style="justify-content:center;"><i class="fas fa-star" style="color:var(--secondary);"></i> Everything Bundle</h3>
+          <div class="pricing-amount" style="text-align:center;">
+            <span class="price">$249 <span>/mo</span></span>
+          </div>
+          <p class="pricing-sub" style="text-align:center;">Site Care + Local Leads + AI Receptionist, together.</p>
+          <ul class="pricing-features" style="max-width:520px;margin:0 auto 32px;">
+            <li><i class="fas fa-check"></i> Site Care Plan — hosting, updates, support</li>
+            <li><i class="fas fa-check"></i> Local Leads — qualified leads monthly</li>
+            <li><i class="fas fa-check"></i> AI Receptionist — 24/7 call answering</li>
+          </ul>
+          <a href="mailto:hello@instaweb.agency?subject=Interested%3A%20Everything%20Bundle%20-%20%24249%2Fmo" class="btn btn-secondary pricing-cta" style="max-width:280px;margin-left:auto;margin-right:auto;"><i class="fas fa-envelope"></i> Get — $249/mo</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1649,7 +1692,7 @@
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" placeholder="(555) 123-4567" required>
+              <input type="tel" id="phone" placeholder="(555) 123-4567" required>
             </div>
           </div>
           <div class="form-group">
@@ -1660,11 +1703,11 @@
             <label>Anything else we should know?</label>
             <textarea placeholder="Tell us your trade and city, or any specific questions..."></textarea>
           </div>
-          <a href="https://buy.stripe.com/6oU4gy4g06Vs8CB1ON48003" class="btn btn-secondary btn-lg" style="width:100%;justify-content:center;display:inline-flex;text-decoration:none;">
-            <i class="fas fa-arrow-right"></i> Buy Now — $399
-          </a>
+          <button type="submit" class="btn btn-secondary btn-lg" style="width:100%;justify-content:center;display:inline-flex;text-decoration:none;border:none;cursor:pointer;">
+            <i class="fas fa-envelope"></i> Email us — get online today
+          </button>
           <p style="text-align:center;margin-top:12px;font-size:12px;color:var(--gray-500);">
-            No credit card required. Site delivered in 7 days.
+            Send us an email and we'll get you online today. No credit card required.
           </p>
         </form>
       </div>
@@ -1680,7 +1723,7 @@
             <div class="logo-mark">I</div>
             <div class="logo-text" style="font-size:18px;">Insta<span>web</span></div>
           </a>
-          <p>Websites for service businesses. Built in 7 days. $399. No runaround.</p>
+          <p>Websites for service businesses. Built in 7 days. From $399. No runaround.</p>
         </div>
         <div>
           <h4>Platform</h4>
@@ -1730,20 +1773,20 @@
     /* Form submission handler */
     function handleFormSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-check-circle"></i> Thanks! We\'ll be in touch.';
-        btn.style.background = 'linear-gradient(135deg, var(--accent), #059669)';
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          e.target.reset();
-        }, 3000);
-      }, 1500);
+      const form = e.target;
+      const business = (form.querySelector('#business-name') || form.querySelector('input[type="text"]') || {}).value || '';
+      const email = (form.querySelector('input[type="email"]') || {}).value || '';
+      const phone = (form.querySelector('#phone') || {}).value || '';
+      const notes = (form.querySelector('textarea') || {}).value || '';
+      const subject = encodeURIComponent('New website inquiry' + (business ? ' — ' + business : ''));
+      const body = encodeURIComponent(
+        'Business name: ' + business + '\n' +
+        'Email: ' + email + '\n' +
+        (phone ? 'Phone: ' + phone + '\n' : '') +
+        (notes ? 'Details: ' + notes + '\n' : '') +
+        '\n— Sent from instaweb.agency'
+      );
+      window.location.href = 'mailto:hello@instaweb.agency?subject=' + subject + '&body=' + body;
     }
 
     /* Close mobile nav on link click */
