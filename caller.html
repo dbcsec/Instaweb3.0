@@ -60,6 +60,7 @@ body { font-family:var(--font-body); background:var(--dark); color:var(--light);
 .badge { padding:3px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
 .badge-called { background:#059669; color:#fff; }
 .badge-voicemail { background:var(--secondary); color:var(--dark); }
+.badge-no-answer { background:#6B7280; color:#fff; }
 .badge-callback { background:var(--primary-light); color:#fff; }
 .badge-no { background:#dc2626; color:#fff; }
 .badge-new { background:rgba(255,255,255,0.06); color:var(--gray-400); }
@@ -136,7 +137,8 @@ body { font-family:var(--font-body); background:var(--dark); color:var(--light);
     <option value="electrical">Electrical</option>
     <option value="restaurant">Restaurant</option>
   </select>
-  <select id="sortBy" onchange="draw()" style="width:120px;">
+  <select id="sortBy" onchange="draw()" style="width:130px;">
+    <option value="priority">Priority</option>
     <option value="">Default</option>
     <option value="city">By City</option>
     <option value="name">By Name</option>
@@ -176,8 +178,10 @@ body { font-family:var(--font-body); background:var(--dark); color:var(--light);
     <label>Status</label>
     <select id="det-status">
       <option value="">— Not called yet —</option>
-      <option value="called">✅ Called — Interested</option>
+      <option value="answered">📞 Answered</option>
+      <option value="interested">💰 Interested</option>
       <option value="voicemail">📞 Left Voicemail</option>
+      <option value="no-answer">📵 No Answer</option>
       <option value="callback">🔄 Callback Scheduled</option>
       <option value="email-captured">📧 Email Captured</option>
       <option value="not-interested">❌ Not Interested</option>
@@ -248,19 +252,30 @@ function sortLeads(arr, sort){
   if(sort==='city') return [...arr].sort((a,b)=>(a.city||'').localeCompare(b.city||''));
   if(sort==='name') return [...arr].sort((a,b)=>(a.business_name||'').localeCompare(b.business_name||''));
   if(sort==='industry') return [...arr].sort((a,b)=>(a.industry||'').localeCompare(b.industry||''));
+  if(sort==='priority') {
+    const P = {hvac:0, roofing:1, plumbing:2, electrical:3, restaurant:4};
+    return [...arr].sort((a,b)=>{
+      let pa = P[(a.industry||'').toLowerCase()] ?? 9;
+      let pb = P[(b.industry||'').toLowerCase()] ?? 9;
+      if(pa!==pb) return pa-pb;
+      let da = a.demo_url ? 0 : 1, db = b.demo_url ? 0 : 1;
+      if(da!==db) return da-db;
+      return (a.business_name||'').localeCompare(b.business_name||'');
+    });
+  }
   return arr;
 }
 
 function getNextUncalled(){
-  // Priority: not called, has phone
-  for(let l of D){
+  // Priority: industry priority order, then not called, has phone
+  let sorted = sortLeads(D, 'priority');
+  for(let l of sorted){
     if(!l.phone) continue;
     let id=(l.business_name||'')+'|'+(l.phone||'');
     let c=C[id]||{};
     if(!c.status) return l;
   }
-  // If all called, give the first uncalled
-  return D.find(l => l.phone && !(C[(l.business_name||'')+'|'+(l.phone||'')]||{}).status) || D.find(l=>l.phone);
+  return sorted.find(l => l.phone && !(C[(l.business_name||'')+'|'+(l.phone||'')]||{}).status) || sorted.find(l=>l.phone);
 }
 
 function callNext(){
@@ -298,10 +313,12 @@ function draw(){
     let isPriority = l.phone && nextUncalled && (l.business_name===nextUncalled.business_name && l.phone===nextUncalled.phone);
     let badges = '';
     let statusLabel = '';
-    if(c.status==='called') { badges+='<span class="badge badge-called">✅ Called</span>'; statusLabel='Called'; }
+    if(c.status==='interested'||c.status==='called') { badges+='<span class="badge badge-called">💰 Interested</span>'; statusLabel='Interested'; }
+    else if(c.status==='answered') { badges+='<span class="badge badge-called">✅ Answered</span>'; statusLabel='Answered'; }
     else if(c.status==='voicemail') { badges+='<span class="badge badge-voicemail">📞 Voicemail</span>'; statusLabel='Voicemail'; }
+    else if(c.status==='no-answer') { badges+='<span class="badge badge-no-answer">📵 No Answer</span>'; statusLabel='No answer'; }
     else if(c.status==='callback') { badges+='<span class="badge badge-callback">🔄 Callback</span>'; statusLabel='Callback'; }
-    else if(c.status==='no'||c.status==='not-interested') { badges+='<span class="badge badge-no">❌ No</span>'; statusLabel='Not interested'; }
+    else if(c.status==='no'||c.status==='not-interested') { badges+='<span class="badge badge-no">❌ Not interested</span>'; statusLabel='Not interested'; }
     else if(c.status==='email-captured') { badges+='<span class="badge badge-emailed">📧 Email</span>'; statusLabel='Email captured'; }
     else if(l.emailed) { badges+='<span class="badge badge-emailed">📧 Emailed</span>'; }
     else { badges+='<span class="badge badge-new">✦ New</span>'; }
@@ -314,15 +331,17 @@ function draw(){
     h+='<div class="info"><span><i class="fas fa-phone"></i> '+(l.phone||'No phone')+'</span><span><i class="fas fa-map-pin"></i> '+(l.city||'')+' '+(l.state||'')+'</span></div>';
     h+='<div class="badges">'+badges+'</div>';
     h+='<div class="quick-status">';
-    h+='<button class="'+(c.status==='called'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'called\')">✅</button>';
-    h+='<button class="'+(c.status==='voicemail'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'voicemail\')">📞</button>';
-    h+='<button class="'+(c.status==='email-captured'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'email-captured\')">📧</button>';
-    h+='<button class="'+(c.status==='callback'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'callback\')">🔄</button>';
-    h+='<button class="'+(c.status==='not-interested'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'not-interested\')">❌</button>';
+    h+='<button class="'+(c.status==='answered'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'answered\')" title="Answered">📞</button>';
+    h+='<button class="'+(c.status==='interested'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'interested\')" title="Interested">💰</button>';
+    h+='<button class="'+(c.status==='voicemail'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'voicemail\')" title="Voicemail">📻</button>';
+    h+='<button class="'+(c.status==='no-answer'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'no-answer\')" title="No Answer">📵</button>';
+    h+='<button class="'+(c.status==='email-captured'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'email-captured\')" title="Email captured">📧</button>';
+    h+='<button class="'+(c.status==='callback'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'callback\')" title="Callback">🔄</button>';
+    h+='<button class="'+(c.status==='not-interested'?'active':'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'not-interested\')" title="Not interested">❌</button>';
     if(c.notes) h+='<button onclick="event.stopPropagation()" style="color:var(--accent);">📝</button>';
     h+='</div>';
     h+='<div class="actions">';
-    h+='<a class="btn-call" href="tel:'+(l.phone||'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'called\')"><i class="fas fa-phone"></i> Call</a>';
+    h+='<a class="btn-call" href="tel:'+(l.phone||'')+'" onclick="event.stopPropagation();quickStatus(\''+id.replace(/'/g,"\\'")+'\',\'answered\')"><i class="fas fa-phone"></i> Call</a>';
     if(l.email) h+='<a class="btn-email" href="mailto:'+l.email+'" onclick="event.stopPropagation()"><i class="fas fa-envelope"></i> Email</a>';
     if(l.demo_url) h+='<a class="btn-preview" href="'+l.demo_url+'" target="_blank" onclick="event.stopPropagation()"><i class="fas fa-eye"></i> Preview</a>';
     h+='<button class="btn-status" onclick="event.stopPropagation();openDetail(\''+id.replace(/'/g,"\\'")+'\')"><i class="fas fa-ellipsis"></i></button>';
@@ -385,10 +404,10 @@ function showTab(id,el){
 
 const SCRIPTS=[
   {t:'🎯 Opener',b:'"Hi, this is [name] from Instaweb. I sent you a preview of your new website. Did you get a chance to see it?"'},
-  {t:'👍 If YES',b:'"What did you think? It\'s mobile-optimized, built for your trade. I can have it live by Thursday. $399 activation, $248/month. Want me to flip it on?"'},
-  {t:'👎 If NO',b:'"No problem — we built a lead-generating website for your business. Normally $2,500+, but as a market entry: $399 to activate, $248/month. Takes about 5 minutes."'},
+  {t:'👍 If YES',b:'"What did you think? It\'s mobile-optimized, built for your trade. I can have it live by Thursday. $399 one-time setup, then $99/month for hosting and care. Want me to flip it on?"'},
+  {t:'👎 If NO',b:'"No problem — we built a lead-generating website for your business. Normally $2,500+, but as a market entry: $399 setup, then $99/month. Takes about 5 minutes."'},
   {t:'💬 "I have a website"',b:'"Most of our clients had one too — but it wasn\'t generating leads 24/7. Ours captures calls and form submissions. Want to see the preview?"'},
-  {t:'💰 "Too expensive"',b:'"$399 is less than one ad click on Google. $248/month includes hosting, maintenance, and a monthly lead report. Most clients see ROI in the first week."'},
+  {t:'💰 "Too expensive"',b:'"$399 one-time setup, then $99/month for hosting and care. Local leads and our AI receptionist are optional add-ons. Most clients see ROI in the first week."'},
   {t:'🤔 "Need to think"',b:'"I have a slot open Thursday at 10 AM. If I don\'t hear from you by then, I\'ll release it to the next business on my list. Fair?"'},
   {t:'⏰ "Too busy"',b:'"Exactly why we built this. While you\'re on job sites, your site captures leads automatically. You don\'t have to do anything."'},
   {t:'📈 "Booked solid"',b:'"Good problem to have. But what about slow months? A lead-generating site means you\'re never scrambling for work. Insurance for your revenue."'},
@@ -396,8 +415,8 @@ const SCRIPTS=[
   {t:'📧 "Send me something"',b:'"Already sent the preview link — check your email now. It\'s a live demo. Open it on your phone and tell me what you think."'},
   {t:'🔥 "Got burned before"',b:'"No long-term contract. Month-to-month. If we don\'t deliver, you cancel. Simple as that."'},
   {t:'✂️ "Can you beat that price?"',b:'"This is already our market-entry rate — normally $2,500. The price is the price, and it\'s a great deal."'},
-  {t:'👫 "Talk to my partner"',b:'"What concerns will they have — the $399 or the $248/month? The monthly pays for itself after one good lead. Want me to call you both?"'},
-  {t:'✅ Close',b:'"Great — I\'ll send the payment link right now. $399 activation, then $248/month. Live by Thursday. Sound good?"'}
+  {t:'👫 "Talk to my partner"',b:'"What concerns will they have — the $99/month care plan? It pays for itself after one good lead. Want me to call you both?"'},
+  {t:'✅ Close',b:'"Great — I\'ll send the payment link right now. $399 setup, then $99/month. Live by Thursday. Sound good?"'}
 ];
 
 function renderScript(){
