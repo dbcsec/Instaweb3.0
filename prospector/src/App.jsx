@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { ODOT_LEADS } from "./odotLeads.js";
 
 const PIPELINE_KEY = "instaweb-pipeline-v5";
@@ -694,7 +695,7 @@ export default function App() {
         </div>
 
         <div style={s.tabs}>
-          {[["agent","🤖 Agent"],["realleads",`📋 Real Leads (${ODOT_LEADS.length})`],["manual","🎯 Manual"],["bulk","📝 Bulk"],["pipeline",`📊 Pipeline (${pipeline.length})`],["noemail",`⚠️ Needs Email (${noEmailLeads.length})`]].map(([id,label])=>(
+          {[["agent","🤖 Agent"],["realleads",`📋 Real Leads (${ODOT_LEADS.length})`],["manual","�� Manual"],["bulk","📝 Bulk"],["pipeline",`📊 Pipeline (${pipeline.length})`],["noemail",`⚠️ Needs Email (${noEmailLeads.length})`]].map(([id,label])=>(
             <button key={id} style={s.tab(tab===id)} onClick={()=>setTab(id)}>{label}</button>
           ))}
         </div>
@@ -1002,7 +1003,7 @@ export default function App() {
           </div>
         )}
 
-        {/* ─── NO EMAIL REVIEW TAB ────────────────────────────────────── */}
+        {/* ─── NO EMAIL REVIEW TAB ──────���──────────────────���──────────── */}
         {tab==="noemail" && (
           <div>
             <div style={s.card}>
@@ -1057,6 +1058,7 @@ export default function App() {
           </div>
         )}
       </div>
+      <Analytics />
     </div>
   );
 }

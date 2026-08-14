@@ -233,5 +233,9 @@
       alert(`Industrial Blitz initiated!\n\nNiche: ${niche}\nLocation: ${location}\nNotes: ${notes}\n\nThe AI agents are now scanning for matching businesses.`);
     });
   </script>
+  <script type="module">
+    import { inject } from 'https://cdn.jsdelivr.net/npm/@vercel/analytics@1/+esm';
+    inject();
+  </script>
 </body>
 </html>
