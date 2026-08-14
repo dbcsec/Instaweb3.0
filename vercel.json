@@ -3,7 +3,6 @@
   "name": "instaweb-brand",
   "routes": [
     { "src": "/", "dest": "/index.html" },
-    { "src": "/ad-offer", "dest": "/ad-offer.html" },
     { "src": "/dashboard", "dest": "/dashboard.html" },
     { "src": "/find-leads", "dest": "/find-leads.html" },
     { "src": "/build-demo", "dest": "/build-demo.html" },
@@ -11,6 +10,7 @@
     { "src": "/quick-fix", "dest": "/quick-fix.html" },
     { "src": "/data/leads_data.js", "dest": "/data/leads_data.js" },
     { "src": "/data/leads_stats.json", "dest": "/data/leads_stats.json" },
+    { "src": "/data/leads.json", "dest": "/data/leads.json" },
     { "src": "/data", "dest": "/data.html" },
     { "src": "/caller-pro", "dest": "/caller-pro.html" },
     { "src": "/caller", "dest": "/caller.html" },

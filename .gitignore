@@ -1,5 +1,3 @@
 API-TOK
 node_modules/
 data/leads/
-.vercel
-.env*
