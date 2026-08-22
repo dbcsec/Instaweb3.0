@@ -21,6 +21,34 @@ async function dbQuery(sql) {
   return await resp.json();
 }
 
+// Turso /v2/pipeline REQUIRES typed Value args ({type:'text',value:...}),
+// NOT plain strings — plain strings fail with "expected Value enum".
+function tv(s) {
+  return { type: 'text', value: s === null || s === undefined ? '' : String(s) };
+}
+
+/**
+ * Execute a parameterized write (insert/update) with TYPED args and validate the
+ * response. Returns { ok: true } or { ok: false, error: string }. Never reports
+ * success on a silent DB failure.
+ */
+async function dbWrite(sql, args) {
+  const resp = await fetch(apiUrl + '/v2/pipeline', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + DB_TOKEN, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ requests: [{ type: 'execute', stmt: { sql, args: (args || []).map(tv) } }] })
+  });
+  const out = await resp.json();
+  if (!out || !out.results || !Array.isArray(out.results)) {
+    return { ok: false, error: 'unexpected DB response structure' };
+  }
+  const first = out.results[0];
+  if (!first || first.type === 'error') {
+    return { ok: false, error: 'DB error: ' + ((first && first.error && first.error.message) || 'unknown') };
+  }
+  return { ok: true };
+}
+
 /**
  * Check whether a Turso pipeline response contains an error in the first result.
  * Returns { ok: true } or { ok: false, error: string }.
@@ -378,25 +406,26 @@ async function handleImport(req, res) {
           //   demo_url, source, status, notes, metadata, first_seen_at, last_updated_at,
           //   contacted_at, conflict_flag, last_activity_at, merge_history,
           //   superseded_by, outage_queued, stale
-          const insertSql = 
-            "INSERT INTO leads_pool (lead_id, business_name, phone, city, state, industry, email, demo_url, source, notes, metadata, first_seen_at, last_updated_at, last_activity_at) VALUES ('" +
-            escape(leadId) + "','" +
-            escape(lead.business_name) + "','" +
-            escape(normalizePhone(lead.phone)) + "','" +
-            escape(lead.city) + "','" +
-            escape(lead.state) + "','" +
-            escape(lead.trade || lead.industry || '') + "','" +
-            escape(lead.email) + "','" +
-            escape(lead.demo_url) + "','" +
-            escape(lead.source_url || 'owner_upload') + "','" +
-            escape(lead.notes) + "','" +
-            escape(JSON.stringify(metadataObj)) + "','" +
-            escape(lead.scrape_date ? lead.scrape_date + 'T00:00:00Z' : now) + "','" +
-            escape(now) + "','" +
-            escape(now) + "')";
-          
-          const insertResp = await dbQuery(insertSql);
-          const insertCheck = checkDbResult(insertResp, 'Insert');
+          const insertSql =
+            "INSERT INTO leads_pool (lead_id, business_name, phone, city, state, industry, email, demo_url, source, notes, metadata, first_seen_at, last_updated_at, last_activity_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+          const insertArgs = [
+            leadId,
+            lead.business_name,
+            normalizePhone(lead.phone),
+            lead.city,
+            lead.state,
+            lead.trade || lead.industry || '',
+            lead.email,
+            lead.demo_url,
+            lead.source_url || 'owner_upload',
+            lead.notes,
+            JSON.stringify(metadataObj),
+            lead.scrape_date ? lead.scrape_date + 'T00:00:00Z' : now,
+            now,
+            now
+          ];
+
+          const insertCheck = await dbWrite(insertSql, insertArgs);
           if (!insertCheck.ok) {
             errors.push({ business_name: lead.business_name, error: insertCheck.error });
             continue;
