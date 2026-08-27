@@ -119,7 +119,7 @@ function buildDemoHTML(lead) {
   <h2>Ready to Get Started?</h2>
   <a href="tel:${phoneDigits}">📞 ${phone}</a>
 </div>
-<footer>This free demo was built for ${name} by <a href="https://instaweb.agency" target="_blank">Instaweb</a>. Like what you see? Let's make it real — <a href="mailto:hello@instaweb.agency">hello@instaweb.agency</a></footer>
+<footer>This free demo was built for ${name} by <a href="https://instaweb.agency" target="_blank">Instaweb</a>. Like what you see? Let's make it real — <a href="mailto:sales@mail.instaweb.agency">sales@mail.instaweb.agency</a></footer>
 </body>
 </html>`;
 }

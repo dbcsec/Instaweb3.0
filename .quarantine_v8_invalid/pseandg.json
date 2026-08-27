@@ -1,0 +1,16 @@
+{
+ "business_name": "PSE&G",
+ "industry": "Electrical",
+ "city": "Camden",
+ "state": "NJ",
+ "phone": "+18004367734",
+ "email": "customerservice2@pseg.com",
+ "website": "https://www.pseg.com",
+ "email_source": "pseg.com (found on https://www.pseg.com)",
+ "source": "Google Maps scrape 2026-08-24 (wave-8 A/B) via agent-browser; email from own site https://www.pseg.com",
+ "verified": true,
+ "title": "",
+ "slug": "pseandg",
+ "lead_id": "a36e4ee9513873c8a9a6f3b6e698c2473b87e767936551e7dec5120bfd16fb9c",
+ "demo_url": "https://instaweb.agency/demo/pseandg"
+}

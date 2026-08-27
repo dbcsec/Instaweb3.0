@@ -11,11 +11,11 @@ export default async function handler(req, res) {
     }
 
     const payload = {
-      from: "Instaweb <hello@instaweb.agency>",
+      from: "Instaweb <sales@mail.instaweb.agency>",
       to: [to],
       subject,
       text,
-      reply_to: replyTo || "hello@instaweb.agency",
+      reply_to: replyTo || "sales@mail.instaweb.agency",
     };
     // scheduledAt accepts either natural language ("in 3 days") or ISO 8601
     if (scheduledAt) payload.scheduledAt = scheduledAt;

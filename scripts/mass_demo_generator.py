@@ -9,7 +9,7 @@ from datetime import datetime
 
 # Config
 LEADS_PER_BATCH = 500
-BASE_DIR = "/home/team/shared/instaweb-unified"
+BASE_DIR = "/home/team/shared/instaweb3.0"
 OUTPUT_DIR = f"{BASE_DIR}/data/demos/mass_output"
 EMAIL_DIR = f"{BASE_DIR}/data/outreach/mass_batches"
 

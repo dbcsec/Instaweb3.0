@@ -1,1 +1,313 @@
-/home/team/shared/instaweb-unified/templates/elite-trade.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Able Roofing — Trusted Roofing Service</title>
+  <meta name="description" content="Able Roofing — Trusted Roofing Service. Serving Columbus with expert Roofing services. Call (380) 276-3194 today.">
+  <meta property="og:title" content="Able Roofing — Trusted Roofing Service">
+  <meta property="og:description" content="Premium Roofing services in Columbus. Trusted by hundreds of local homeowners.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.instaweb.agency/demo/able-roofing">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #0d5e57;
+      --primary-light: #14b8a6;
+      --primary-glow: rgba(15,118,110,0.15);
+      --secondary: #f59e0b;
+      --accent: #06b6d4;
+      --bg: #0a0e17;
+      --bg-card: #111827;
+      --bg-card-hover: #1a2332;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border: rgba(255,255,255,0.06);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    a { color: var(--primary-light); text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== NAV ===== */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 12px 0; background: rgba(10,14,23,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 18px; font-weight: 700; font-family: var(--font-display); }
+    .nav-logo .icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; }
+    .nav-logo span { color: var(--secondary); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--text-muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { padding: 10px 24px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; border-radius: 50px; font-size: 14px; font-weight: 600; }
+
+    /* ===== HERO ===== */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .hero-bg .gradient-1 { position: absolute; top: -20%; left: -10%; width: 60%; height: 60%; background: radial-gradient(ellipse, var(--primary-glow) 0%, transparent 70%); }
+    .hero-bg .gradient-2 { position: absolute; bottom: -30%; right: -15%; width: 70%; height: 70%; background: radial-gradient(ellipse, rgba(245,158,11,0.08) 0%, transparent 70%); }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+    @media (max-width: 900px) { .hero-content { grid-template-columns: 1fr; gap: 40px; } }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 .highlight { background: linear-gradient(135deg, var(--primary-light), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 520px; line-height: 1.8; margin-bottom: 32px; }
+    .hero-badges { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+    .hero-badge { padding: 8px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 50px; font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+    .hero-badge i { color: var(--accent); }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; border-radius: 50px; font-weight: 600; font-size: 1.05rem; transition: all 0.3s ease; border: none; cursor: pointer; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(15,118,110,0.3); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 50px; font-weight: 500; font-size: 1.05rem; transition: all 0.3s ease; }
+    .btn-secondary:hover { border-color: var(--primary-light); background: rgba(15,118,110,0.08); }
+
+    /* ===== HERO CARD ===== */
+    .hero-card { background: var(--bg-card); border-radius: var(--radius); padding: 36px; border: 1px solid var(--border); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); }
+    .hero-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .hero-card-header h3 { font-family: var(--font-display); font-size: 1.3rem; }
+    .hero-card-rating { display: flex; align-items: center; gap: 8px; }
+    .hero-card-rating .stars { color: var(--secondary); font-size: 1rem; }
+    .hero-card-rating .num { color: var(--text-muted); font-size: 14px; }
+
+    .service-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    @media (max-width: 480px) { .service-list { grid-template-columns: 1fr; } }
+    .service-item { display: flex; align-items: center; gap: 14px; padding: 16px; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid var(--border); transition: all 0.25s ease; }
+    .service-item:hover { background: var(--bg-card-hover); border-color: rgba(15,118,110,0.2); transform: translateY(-2px); }
+    .service-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--primary-glow); color: var(--primary-light); font-size: 1.1rem; flex-shrink: 0; }
+    .service-info .name { font-weight: 600; font-size: 0.95rem; }
+    .service-info .desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+    .hero-card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--border); margin-top: 8px; }
+    .hero-card-footer .price { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+    .hero-card-footer .tag { padding: 8px 16px; background: rgba(6,182,212,0.1); color: var(--accent); border-radius: 50px; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar { max-width: 1200px; margin: -40px auto 60px; padding: 0 24px; position: relative; z-index: 3; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    @media (max-width: 700px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+    .trust-item { background: var(--bg-card); padding: 28px 20px; text-align: center; }
+    .trust-item i { font-size: 1.6rem; color: var(--primary-light); margin-bottom: 8px; }
+    .trust-item .label { font-weight: 700; font-size: 1rem; }
+    .trust-item .sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-label { display: inline-block; padding: 6px 16px; background: rgba(15,118,110,0.1); border: 1px solid rgba(15,118,110,0.2); border-radius: 50px; font-size: 12px; font-weight: 600; color: var(--primary-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+    .section-sub { color: var(--text-muted); max-width: 600px; margin: 0 auto 50px; font-size: 1.05rem; line-height: 1.7; }
+
+    /* ===== ABOUT ===== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+    .stat-block { text-align: center; padding: 24px 16px; background: var(--bg-card); border-radius: var(--radius-sm); border: 1px solid var(--border); }
+    .stat-block .num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, var(--primary-light), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-block .lbl { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ===== REVIEWS ===== */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .review-card { background: var(--bg-card); border-radius: var(--radius-sm); padding: 28px; border: 1px solid var(--border); }
+    .review-card .stars { color: var(--secondary); font-size: 0.9rem; margin-bottom: 12px; }
+    .review-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; font-style: italic; }
+    .review-card .author { font-weight: 600; font-size: 0.9rem; margin-top: 16px; display: flex; align-items: center; gap: 10px; }
+    .review-card .author .avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; font-weight: 600; }
+
+    /* ===== CTA SECTION ===== */
+    .cta-block { background: linear-gradient(135deg, var(--bg-card), #0d1624); border-radius: var(--radius); padding: 60px; text-align: center; border: 1px solid var(--border); margin-top: 60px; position: relative; overflow: hidden; }
+    .cta-block::before { content: ''; position: absolute; top: -50%; left: -20%; width: 70%; height: 100%; background: radial-gradient(ellipse, var(--primary-glow) 0%, transparent 70%); pointer-events: none; }
+    .cta-block h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+    .cta-block p { color: var(--text-muted); max-width: 500px; margin: 0 auto 24px; }
+
+    /* ===== STICKY BAR ===== */
+    .sticky { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: rgba(10,14,23,0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--border); }
+    .sticky-info { display: flex; align-items: center; gap: 16px; }
+    .sticky-info .price { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; }
+    .sticky-info .price span { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; }
+    .sticky-phone { display: flex; align-items: center; gap: 10px; padding: 14px 32px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; }
+    .sticky-phone:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(15,118,110,0.3); }
+
+    /* ===== FOOTER ===== */
+    .footer { text-align: center; padding: 40px 24px 100px; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .reveal { opacity: 0; }
+    .reveal.visible { animation: fadeUp 0.7s ease forwards; }
+    .reveal-d1 { animation-delay: 0.1s; }
+    .reveal-d2 { animation-delay: 0.2s; }
+    .reveal-d3 { animation-delay: 0.3s; }
+    .reveal-d4 { animation-delay: 0.4s; }
+
+    @media (max-width: 480px) { .hero { padding: 100px 16px 60px; } .section { padding: 60px 16px; } .sticky { flex-direction: column; gap: 10px; padding: 12px 16px; } .cta-block { padding: 40px 24px; } .hero-card { padding: 24px; } }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <div class="icon">I</div>
+        Able Roofing <span>✦</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="tel:(380) 276-3194" class="nav-cta"><i class="fas fa-phone"></i> (380) 276-3194</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="gradient-1"></div>
+      <div class="gradient-2"></div>
+      <div class="grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="reveal visible">
+        <div class="hero-badges">
+          <span class="hero-badge"><i class="fas fa-shield-halved"></i> Licensed & Insured</span>
+          <span class="hero-badge"><i class="fas fa-star"></i> 4.9 ★</span>
+          <span class="hero-badge"><i class="fas fa-clock"></i> Same-Day Service</span>
+        </div>
+        <h1>Columbus's Trusted <span class="highlight">Roofing</span> Experts</h1>
+        <p>Family-owned and serving our community for 15+ years. We deliver premium quality, transparent pricing, and same-day service on every job. No shortcuts. No surprises.</p>
+        <div class="hero-actions">
+          <a href="tel:(380) 276-3194" class="btn-primary"><i class="fas fa-phone"></i> Call (380) 276-3194</a>
+          <a href="#services" class="btn-secondary"><i class="fas fa-arrow-down"></i> Our Services</a>
+        </div>
+      </div>
+      <div class="hero-card reveal visible reveal-d2">
+        <div class="hero-card-header">
+          <h3><i class="fas fa-certificate" style="color:var(--primary-light);margin-right:8px;"></i>Premium Service Package</h3>
+          <div class="hero-card-rating">
+            <span class="stars">★★★★★</span>
+            <span class="num">(247)</span>
+          </div>
+        </div>
+        <div class="service-list">
+                    <div class="service-item">
+            <div class="service-icon"><i class="fas fa-home"></i></div>
+            <div class="service-info"><div class="name">Residential Roofing</div><div class="desc">Call for pricing</div></div>
+          </div>
+          <div class="service-item">
+            <div class="service-icon"><i class="fas fa-building"></i></div>
+            <div class="service-info"><div class="name">Commercial Roofing</div><div class="desc">Call for pricing</div></div>
+          </div>
+          <div class="service-item">
+            <div class="service-icon"><i class="fas fa-bolt"></i></div>
+            <div class="service-info"><div class="name">Storm Damage Repair</div><div class="desc">Call for pricing</div></div>
+          </div>
+          <div class="service-item">
+            <div class="service-icon"><i class="fas fa-search"></i></div>
+            <div class="service-info"><div class="name">Free Inspection</div><div class="desc">Call for pricing</div></div>
+          </div>
+
+        </div>
+        <div class="hero-card-footer">
+          <div>
+            <div class="price">Call for Pricing</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Free estimates · No hidden fees</div>
+          </div>
+          <span class="tag"><i class="fas fa-bolt"></i> Available 24/7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-grid">
+      <div class="trust-item reveal"><i class="fas fa-shield-halved"></i><div class="label">Licensed & Insured</div><div class="sub">Full liability coverage</div></div>
+      <div class="trust-item reveal reveal-d1"><i class="fas fa-star"></i><div class="label">247+ Reviews</div><div class="sub">4.9 average rating</div></div>
+      <div class="trust-item reveal reveal-d2"><i class="fas fa-clock"></i><div class="label">Same-Day Service</div><div class="sub">When you need us most</div></div>
+      <div class="trust-item reveal reveal-d3"><i class="fas fa-file-invoice-dollar"></i><div class="label">Free Estimates</div><div class="sub">No obligation quotes</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="reveal">
+      <span class="section-label">About Us</span>
+      <h2 class="section-title">Why Able Roofing?</h2>
+      <p class="section-sub">We've been serving Columbus with pride for 15+ years. Quality work, fair prices, and a 100% satisfaction guarantee on every job.</p>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p style="color:var(--text-muted);line-height:1.9;font-size:1.05rem;">Every job starts with a conversation. We listen, assess, and provide honest recommendations — never upselling you on services you don't need. Our team is background-checked, trained, and equipped with the latest technology to get the job done right the first time.</p>
+        <div class="about-stats">
+          <div class="stat-block"><div class="num">15++</div><div class="lbl">Years Experience</div></div>
+          <div class="stat-block"><div class="num">247</div><div class="lbl">Happy Customers</div></div>
+          <div class="stat-block"><div class="num">100%</div><div class="lbl">Satisfaction Rate</div></div>
+        </div>
+      </div>
+      <div class="reveal reveal-d1" style="background:var(--bg-card);border-radius:var(--radius);padding:40px;border:1px solid var(--border);">
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:12px;">Get Your Free Quote</h3>
+        <p style="color:var(--text-muted);margin-bottom:24px;line-height:1.7;">Call us or request a callback. We'll respond within 30 minutes during business hours.</p>
+        <a href="tel:(380) 276-3194" class="btn-primary" style="display:inline-flex;"><i class="fas fa-phone"></i> (380) 276-3194</a>
+        <p style="color:var(--text-dim);font-size:0.85rem;margin-top:16px;"><i class="fas fa-check-circle" style="color:var(--accent);"></i> Free estimate · No commitment required</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-sub">Don't take our word for it. Here's what our neighbors in Columbus have to say.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal"><div class="stars">★★★★★</div><p>"They were prompt, professional, and did an amazing job. Would highly recommend to anyone in Columbus looking for quality service."</p><div class="author"><div class="avatar">M</div> Michael T.</div></div>
+      <div class="review-card reveal reveal-d1"><div class="stars">★★★★★</div><p>"Called them on a Sunday morning for an emergency. They were at my door within an hour. Fair price and excellent work. Thank you!"</p><div class="author"><div class="avatar">S</div> Sarah K.</div></div>
+      <div class="review-card reveal reveal-d2"><div class="stars">★★★★★</div><p>"I've used them for years. Always consistent, always professional. They're the only ones I trust with my home."</p><div class="author"><div class="avatar">J</div> James R.</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:0;padding-bottom:40px;">
+    <div class="cta-block reveal">
+      <h3>Ready to Get Started?</h3>
+      <p>Call us now for a free estimate. Same-day service available in most areas.</p>
+      <a href="tel:(380) 276-3194" class="btn-primary" style="display:inline-flex;font-size:1.1rem;padding:20px 44px;"><i class="fas fa-phone"></i> Call (380) 276-3194</a>
+    </div>
+  </section>
+
+  <!-- STICKY CTA -->
+  <div class="sticky">
+    <div class="sticky-info">
+      <div class="price">$399 Setup <span>+ $99/mo</span></div>
+    </div>
+    <a href="tel:(380) 276-3194" class="sticky-phone"><i class="fas fa-phone"></i> Call (380) 276-3194</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Able Roofing</strong> · Serving Columbus, OH · <a href="tel:(380) 276-3194">(380) 276-3194</a></p>
+    <p style="margin-top:6px;">Powered by <a href="https://www.instaweb.agency">Instaweb Agency</a></p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

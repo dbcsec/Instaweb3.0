@@ -2,32 +2,136 @@
   "version": 2,
   "name": "instaweb-brand",
   "routes": [
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/ad-offer", "dest": "/ad-offer.html" },
-    { "src": "/dashboard", "dest": "/dashboard.html" },
-    { "src": "/find-leads", "dest": "/find-leads.html" },
-    { "src": "/build-demo", "dest": "/build-demo.html" },
-    { "src": "/outreach", "dest": "/outreach.html" },
-    { "src": "/quick-fix", "dest": "/quick-fix.html" },
-    { "src": "/data/leads_data.js", "dest": "/data/leads_data.js" },
-    { "src": "/data/leads_stats.json", "dest": "/data/leads_stats.json" },
-    { "src": "/data", "dest": "/data.html" },
-    { "src": "/caller-pro", "dest": "/caller-pro.html" },
-    { "src": "/caller", "dest": "/caller.html" },
-    { "src": "/demo/(.*)", "dest": "/data/demos/mass_output/$1.html" },
-    { "src": "/preview", "dest": "/preview.html" },
-    { "src": "/partners", "dest": "/agency-partners.html" },
-    { "src": "/agency-partners", "dest": "/agency-partners.html" },
-    { "src": "/quarantine", "dest": "/quarantine.html" },
-    { "src": "/buyer-shortlist", "dest": "/buyer-shortlist.html" },
-    { "src": "/lead-intake", "dest": "/lead-intake.html" },
-    { "src": "/api/lead-intake/(.*)", "dest": "/api/lead-intake.js" }
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/pricing",
+      "dest": "/pricing.html"
+    },
+    {
+      "src": "/industries",
+      "dest": "/industries.html"
+    },
+    {
+      "src": "/locations",
+      "dest": "/locations.html"
+    },
+    {
+      "src": "/contact",
+      "dest": "/contact.html"
+    },
+    {
+      "src": "/industries/(.*)",
+      "dest": "/industries/$1.html"
+    },
+    {
+      "src": "/locations/(.*)",
+      "dest": "/locations/$1.html"
+    },
+    {
+      "src": "/ad-offer",
+      "dest": "/ad-offer.html"
+    },
+    {
+      "src": "/dashboard",
+      "dest": "/dashboard.html"
+    },
+    {
+      "src": "/find-leads",
+      "dest": "/find-leads.html"
+    },
+    {
+      "src": "/build-demo",
+      "dest": "/build-demo.html"
+    },
+    {
+      "src": "/outreach",
+      "dest": "/outreach.html"
+    },
+    {
+      "src": "/quick-fix",
+      "dest": "/quick-fix.html"
+    },
+    {
+      "src": "/data/leads_data.js",
+      "dest": "/data/leads_data.js"
+    },
+    {
+      "src": "/data/leads_stats.json",
+      "dest": "/data/leads_stats.json"
+    },
+    {
+      "src": "/data",
+      "dest": "/data.html"
+    },
+    {
+      "src": "/caller-pro",
+      "dest": "/caller-pro.html"
+    },
+    {
+      "src": "/caller",
+      "dest": "/caller.html"
+    },
+    {
+      "src": "/demo/(.*)",
+      "dest": "/data/demos/mass_output/$1.html"
+    },
+    {
+      "src": "/preview",
+      "dest": "/preview.html"
+    },
+    {
+      "src": "/partners",
+      "dest": "/agency-partners.html"
+    },
+    {
+      "src": "/agency-partners",
+      "dest": "/agency-partners.html"
+    },
+    {
+      "src": "/quarantine",
+      "dest": "/quarantine.html"
+    },
+    {
+      "src": "/buyer-shortlist",
+      "dest": "/buyer-shortlist.html"
+    },
+    {
+      "src": "/lead-intake",
+      "dest": "/lead-intake.html"
+    },
+    {
+      "src": "/api/lead-intake/(.*)",
+      "dest": "/api/lead-intake.js"
+    },
+    {
+      "src": "/api/resend-webhook",
+      "dest": "/api/resend-webhook.js"
+    }
   ],
   "redirects": [
-    { "source": "/buy/gbp", "destination": "https://buy.stripe.com/28EeVd3fQ6567h285ldjO04", "permanent": true },
-    { "source": "/buy/leads", "destination": "https://buy.stripe.com/eVq5kDg2CalmateetJdjO06", "permanent": true },
-    { "source": "/buy/leads-big", "destination": "https://buy.stripe.com/4gM6oHbMmctueJu85ldjO07", "permanent": true },
-    { "source": "/buy/setup", "destination": "https://buy.stripe.com/28E5kD9Ee51244Q4T9djO03", "permanent": true }
+    {
+      "source": "/buy/gbp",
+      "destination": "https://buy.stripe.com/28EeVd3fQ6567h285ldjO04",
+      "permanent": true
+    },
+    {
+      "source": "/buy/leads",
+      "destination": "https://buy.stripe.com/eVq5kDg2CalmateetJdjO06",
+      "permanent": true
+    },
+    {
+      "source": "/buy/leads-big",
+      "destination": "https://buy.stripe.com/4gM6oHbMmctueJu85ldjO07",
+      "permanent": true
+    },
+    {
+      "source": "/buy/setup",
+      "destination": "https://buy.stripe.com/28E5kD9Ee51244Q4T9djO03",
+      "permanent": true
+    }
   ],
   "functions": {
     "api/stats.js": {
@@ -49,6 +153,10 @@
     "api/lead-intake.js": {
       "memory": 256,
       "maxDuration": 30
+    },
+    "api/resend-webhook.js": {
+      "memory": 128,
+      "maxDuration": 10
     }
   }
 }

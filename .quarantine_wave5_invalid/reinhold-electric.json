@@ -1,0 +1,15 @@
+{
+ "business_name": "Reinhold Electric",
+ "industry": "Electrical",
+ "city": "Springfield Mo",
+ "state": "MO",
+ "phone": "+18003781158",
+ "email": "katie@reinholdelectric.com",
+ "website": "https://www.reinholdelectric.com/",
+ "email_source": "https://www.reinholdelectric.com/",
+ "source": "Google Maps scrape 2026-08-16 (wave-5) via agent-browser; email from https://www.reinholdelectric.com/",
+ "verified": true,
+ "demo_url": "https://instaweb.agency/demo/reinhold-electric",
+ "lead_id": "886b7a910e3b31a399f5bae2caeaca0a92716712d798be8ac7f1b6062b480d41",
+ "slug": "reinhold-electric"
+}

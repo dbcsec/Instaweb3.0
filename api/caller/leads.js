@@ -88,15 +88,12 @@ module.exports = async (req, res) => {
       const source = url.searchParams.get('source') || '';
       const page = parseInt(url.searchParams.get('page')) || 1;
       const limit = parseInt(url.searchParams.get('limit')) || 50;
-      const offset = (page - 1) * limit;
       
       let where = '';
       if (source) where = " WHERE source = '" + source.replace(/'/g, "''") + "'";
       
-      const countResp = await dbQuery("SELECT COUNT(*) as total FROM leads_pool" + where);
-      const total = val(countResp?.results?.[0]?.response?.result?.rows?.[0]?.[0]) || 0;
-      
-      const listResp = await dbQuery("SELECT * FROM leads_pool" + where + " ORDER BY first_seen_at DESC LIMIT " + limit + " OFFSET " + offset);
+      // All leads_pool rows (caller page fetches the full set)
+      const listResp = await dbQuery("SELECT * FROM leads_pool" + where + " ORDER BY first_seen_at DESC");
       const rows = listResp?.results?.[0]?.response?.result?.rows || [];
       const cols = listResp?.results?.[0]?.response?.result?.cols || [];
       
@@ -106,7 +103,57 @@ module.exports = async (req, res) => {
         return obj;
       });
       
-      return res.status(200).json({leads, total, page, limit, total_pages: Math.ceil(total / limit)});
+      // Load per-email A/B/C send dates (sidecar table populated from email_send_log.json)
+      let sendDates = new Map();
+      try {
+        const sdResp = await dbQuery("SELECT email, business, city, state, industry, demo_url, email_sent_a, email_sent_b, email_sent_c FROM lead_send_dates");
+        const sdRows = sdResp?.results?.[0]?.response?.result?.rows || [];
+        const sdCols = sdResp?.results?.[0]?.response?.result?.cols || [];
+        sdRows.forEach(row => {
+          const obj = {};
+          row.forEach((cell, i) => { obj[sdCols[i]?.name || 'col' + i] = val(cell, null); });
+          obj.key = (obj.email || '').toLowerCase().trim();
+          sendDates.set(obj.key, obj);
+        });
+      } catch (e) {
+        // table may not exist yet — degrade gracefully
+        sendDates = new Map();
+      }
+      
+      // Attach A/B/C to existing leads_pool leads by email
+      const seen = new Set();
+      for (const l of leads) {
+        const key = (l.email || '').toLowerCase().trim();
+        const sd = sendDates.get(key);
+        if (sd) {
+          l.email_sent_a = sd.email_sent_a || '';
+          l.email_sent_b = sd.email_sent_b || '';
+          l.email_sent_c = sd.email_sent_c || '';
+          l.emailed = true;
+          seen.add(key);
+        }
+      }
+      
+      // Append emailed-only leads (in send history but not in leads_pool) so ALL sent leads show
+      for (const sd of sendDates.values()) {
+        if (seen.has(sd.key)) continue;
+        seen.add(sd.key);
+        leads.push({
+          business_name: sd.business || '',
+          phone: '', city: sd.city || '', state: sd.state || '',
+          industry: sd.industry || '', email: sd.email || '',
+          demo_url: sd.demo_url || '',
+          emailed: true, email_sent_a: sd.email_sent_a || '',
+          email_sent_b: sd.email_sent_b || '', email_sent_c: sd.email_sent_c || ''
+        });
+      }
+      
+      // Paginate in memory over the merged set
+      const total = leads.length;
+      const offset = (page - 1) * limit;
+      const pageLeads = leads.slice(offset, offset + limit);
+      
+      return res.status(200).json({leads: pageLeads, total, page, limit, total_pages: Math.ceil(total / limit)});
     }
     
     // --- POST: Ingest lead ---
