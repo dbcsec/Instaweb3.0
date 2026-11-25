@@ -184,7 +184,8 @@
   }
 
   /* ---------- gallery ---------- */
-  .gallery{display:grid;gap:16px;grid-template-columns:1fr}
+  .gallery{display:grid;gap:16px;grid-template-columns:1fr;align-items:start}
+  .card.tall img{aspect-ratio:3/4}
   .card{
     position:relative;display:block;width:100%;padding:0;border:0;background:#000;cursor:pointer;
     border-radius:6px;overflow:hidden;text-align:left;color:#fff;
@@ -490,7 +491,7 @@
           </div>
         </button>
 
-        <button class="card" type="button" data-full="/assets/columbia-gorge-inn/room-entry.jpg" data-title="Room View from the Entry" data-detail="Looking in from the entry: bed, armoire with TV, and vertical blinds over the window.">
+        <button class="card tall" type="button" data-full="/assets/columbia-gorge-inn/room-entry.jpg" data-title="Room View from the Entry" data-detail="Looking in from the entry: bed, armoire with TV, and vertical blinds over the window.">
           <img src="/assets/columbia-gorge-inn/room-entry-900.jpg" alt="View from the entry doorway into a room with a bed, an armoire with a TV and vertical blinds" width="900" height="1200" loading="lazy">
           <div class="card-cap">
             <div><h3>Room from the Entry</h3><p>Bed &middot; armoire &middot; window blinds</p></div>
@@ -506,7 +507,7 @@
           </div>
         </button>
 
-        <button class="card" type="button" data-full="/assets/columbia-gorge-inn/bathroom-shower.jpg" data-title="Bathroom — Tiled Walk-In Shower" data-detail="Private bathroom with a tiled walk-in shower, grab bar, hand-held shower head and mosaic tile floor.">
+        <button class="card tall" type="button" data-full="/assets/columbia-gorge-inn/bathroom-shower.jpg" data-title="Bathroom — Tiled Walk-In Shower" data-detail="Private bathroom with a tiled walk-in shower, grab bar, hand-held shower head and mosaic tile floor.">
           <img src="/assets/columbia-gorge-inn/bathroom-shower-900.jpg" alt="Bathroom with a tiled walk-in shower, grab bar, hand-held shower head and mosaic tile floor" width="900" height="1200" loading="lazy">
           <div class="card-cap">
             <div><h3>Bathroom</h3><p>Tiled walk-in shower &middot; grab bar</p></div>
