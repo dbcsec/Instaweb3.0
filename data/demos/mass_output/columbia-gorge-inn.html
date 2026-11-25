@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Columbia Gorge Inn — Rooms &amp; Stays in the Columbia River Gorge</title>
+<meta name="description" content="Columbia Gorge Inn — comfortable single and queen rooms in the Columbia River Gorge, Oregon. In-room vanities, private patios, and easy access to Multnomah Falls, Hood River and Gorge hiking.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Columbia Gorge Inn">
+<meta property="og:description" content="Comfortable single and queen rooms in the Columbia River Gorge, Oregon.">
+<meta property="og:image" content="https://instaweb.agency/assets/columbia-gorge-inn/room-queen-navy.jpg">
+<meta property="og:type" content="website">
+<link rel="preload" as="image" href="/assets/columbia-gorge-inn/room-queen-navy.jpg">
+<style>
+  :root{
+    --ink:#101c18;
+    --ink-soft:#3c4a44;
+    --cream:#f8f4ed;
+    --cream-2:#f1ebe0;
+    --green:#1c3a30;
+    --green-deep:#122820;
+    --terracotta:#b3532c;
+    --sand:#e3d8c6;
+    --line:rgba(16,28,24,.12);
+    --serif:ui-serif,Georgia,"Times New Roman",Times,serif;
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --max:1160px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--cream);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;height:auto}
+  a{color:inherit}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0;letter-spacing:-.01em}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 20px}
+  .eyebrow{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--terracotta);font-weight:700;margin:0 0 14px;
+  }
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(248,244,237,.92);
+    backdrop-filter:saturate(1.4) blur(10px);
+    -webkit-backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+  .brand-mark{
+    width:34px;height:34px;flex:0 0 auto;border-radius:50%;
+    background:var(--green);color:var(--cream);
+    display:grid;place-items:center;font-family:var(--serif);font-size:.95rem;letter-spacing:.02em;
+  }
+  .brand-name{
+    font-family:var(--serif);font-size:1.05rem;letter-spacing:.01em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .nav{display:none;gap:26px;font-size:.9rem}
+  .nav a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+  .nav a:hover{color:var(--ink);border-bottom-color:var(--terracotta)}
+  .header-cta{
+    text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.04em;
+    background:var(--green);color:var(--cream);padding:11px 16px;border-radius:999px;
+    white-space:nowrap;
+  }
+  .header-cta:hover{background:var(--green-deep)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;isolation:isolate;overflow:hidden;background:var(--green-deep);padding:0}
+  .hero-img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;
+    z-index:-2;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:
+      linear-gradient(to top,rgba(9,20,16,.9) 0%,rgba(9,20,16,.5) 42%,rgba(9,20,16,.12) 72%,rgba(9,20,16,.38) 100%);
+  }
+  .hero-inner{
+    min-height:min(72svh,640px);display:flex;flex-direction:column;justify-content:flex-end;
+    padding-top:56px;padding-bottom:40px;color:#fff;
+  }
+  .hero .eyebrow{color:#e8b48f}
+  .hero h1{
+    font-size:clamp(2.25rem,8.5vw,4.6rem);line-height:1.02;letter-spacing:-.02em;
+    max-width:16ch;text-wrap:balance;margin-bottom:18px;
+  }
+  .hero p.lede{
+    margin:0 0 28px;max-width:44ch;font-size:1.02rem;color:rgba(255,255,255,.86);
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--sans);font-size:.94rem;font-weight:700;letter-spacing:.02em;
+    padding:15px 24px;border-radius:999px;text-decoration:none;border:1.5px solid transparent;
+    transition:transform .15s ease,background .2s ease,color .2s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--terracotta);color:#fff}
+  .btn-primary:hover{background:#9c4526}
+  .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .hero-note{
+    margin:22px 0 0;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.62);
+  }
+
+  /* ---------- section basics ---------- */
+  section{padding:64px 0}
+  .section-head{max-width:640px;margin-bottom:34px}
+  .section-head h2{font-size:clamp(1.75rem,5.4vw,2.75rem);text-wrap:balance}
+  .section-head p{margin:14px 0 0;color:var(--ink-soft);font-size:1rem}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  /* ---------- welcome ---------- */
+  .welcome{background:var(--cream)}
+  .welcome-grid{display:grid;gap:30px;align-items:center}
+  .welcome-photo{
+    position:relative;border-radius:6px;overflow:hidden;background:var(--sand);
+    box-shadow:0 24px 48px -30px rgba(16,28,24,.55);
+  }
+  .welcome-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+  .welcome-body h2{font-size:clamp(1.75rem,5.4vw,2.6rem);margin-bottom:16px;text-wrap:balance}
+  .welcome-body p{color:var(--ink-soft);margin:0 0 16px}
+  .welcome-body p:last-child{margin-bottom:0}
+  .detail-list{
+    list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  }
+  .detail-list li{
+    display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--ink);
+    background:var(--cream-2);border:1px solid var(--line);border-radius:5px;padding:12px 14px;
+  }
+  .detail-list svg{flex:0 0 auto;margin-top:2px;color:var(--terracotta)}
+
+  /* ---------- rooms gallery ---------- */
+  .rooms{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .gallery{display:grid;gap:16px;grid-template-columns:1fr}
+  .card{
+    position:relative;display:block;width:100%;padding:0;border:0;background:#000;cursor:pointer;
+    border-radius:6px;overflow:hidden;text-align:left;color:#fff;
+    box-shadow:0 18px 40px -32px rgba(16,28,24,.6);
+  }
+  .card img{
+    width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
+    transition:transform .6s cubic-bezier(.2,.7,.3,1),opacity .3s ease;
+  }
+  .card::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(8,18,14,.82) 0%,rgba(8,18,14,.32) 34%,rgba(8,18,14,0) 62%);
+    pointer-events:none;
+  }
+  .card:hover img{transform:scale(1.04)}
+  .card:focus-visible{outline:3px solid var(--terracotta);outline-offset:3px}
+  .card-cap{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 18px 18px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+  }
+  .card-cap h3{font-size:1.22rem;letter-spacing:-.005em}
+  .card-cap p{margin:5px 0 0;font-size:.85rem;color:rgba(255,255,255,.82);line-height:1.45}
+  .zoom{
+    flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);
+  }
+  .rooms-note{margin:22px 0 0;font-size:.86rem;color:var(--ink-soft)}
+
+  /* ---------- area ---------- */
+  .area{background:var(--green-deep);color:#fff}
+  .area .eyebrow{color:#e8b48f}
+  .area .section-head p{color:rgba(255,255,255,.78)}
+  .area-grid{display:grid;gap:16px;grid-template-columns:1fr}
+  .area-card{
+    border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:24px 22px;
+    background:rgba(255,255,255,.045);
+  }
+  .area-card .ico{color:#e8b48f;margin-bottom:14px}
+  .area-card h3{font-size:1.28rem;margin-bottom:8px}
+  .area-card p{margin:0;font-size:.93rem;color:rgba(255,255,255,.78)}
+  .area-foot{margin:26px 0 0;font-size:.86rem;color:rgba(255,255,255,.6)}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--cream);padding-bottom:76px}
+  .contact-panel{
+    background:var(--cream-2);border:1px solid var(--line);border-radius:8px;
+    padding:34px 22px;display:grid;gap:26px;align-items:center;
+    box-shadow:0 26px 60px -48px rgba(16,28,24,.7);
+  }
+  .contact-panel h2{font-size:clamp(1.7rem,5.6vw,2.5rem);text-wrap:balance;margin-bottom:12px}
+  .contact-panel p{margin:0;color:var(--ink-soft)}
+  .slots{display:grid;gap:12px}
+  .slot{
+    display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:6px;
+    background:#fff;border:1.5px dashed var(--terracotta);
+  }
+  .slot-label{
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--terracotta);
+  }
+  .slot-value{font-size:1rem;color:var(--ink);font-weight:600}
+  .slot-value .hint{font-weight:400;color:var(--ink-soft)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+  .cta-row .btn-primary{background:var(--green)}
+  .cta-row .btn-primary:hover{background:var(--green-deep)}
+
+  /* ---------- footer ---------- */
+  .site-footer{background:var(--ink);color:rgba(255,255,255,.72);padding:40px 0 34px;font-size:.85rem}
+  .footer-inner{display:grid;gap:22px}
+  .footer-brand{font-family:var(--serif);font-size:1.1rem;color:#fff;margin:0 0 6px}
+  .footer-links{display:flex;flex-wrap:wrap;gap:18px}
+  .footer-links a{text-decoration:none;color:rgba(255,255,255,.72)}
+  .footer-links a:hover{color:#fff}
+  .footer-slots{display:flex;flex-wrap:wrap;gap:10px}
+  .footer-slot{
+    border:1.5px dashed rgba(232,180,143,.6);border-radius:5px;padding:8px 12px;
+    font-size:.78rem;color:rgba(255,255,255,.78);
+  }
+  .footer-slot b{color:#e8b48f;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.66rem;display:block;margin-bottom:2px}
+  .footer-legal{margin:0;color:rgba(255,255,255,.42);font-size:.78rem}
+
+  /* ---------- lightbox ---------- */
+  .lb{
+    position:fixed;inset:0;z-index:200;display:none;place-items:center;
+    background:rgba(7,15,12,.94);padding:18px;
+  }
+  .lb.open{display:grid}
+  .lb figure{margin:0;max-width:1100px;width:100%;display:flex;flex-direction:column;gap:12px}
+  .lb img{width:100%;max-height:78svh;object-fit:contain;border-radius:4px;background:#000}
+  .lb figcaption{color:#fff;text-align:center;font-size:.92rem}
+  .lb figcaption span{display:block;color:rgba(255,255,255,.62);font-size:.82rem;margin-top:4px}
+  .lb-btn{
+    position:absolute;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);
+    color:#fff;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  }
+  .lb-btn:hover{background:rgba(255,255,255,.26)}
+  .lb-close{top:16px;right:16px}
+  .lb-prev{left:10px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:10px;top:50%;transform:translateY(-50%)}
+
+  /* ---------- responsive ---------- */
+  /* phones: photo above, copy below — no tight landscape crop */
+  @media (max-width:619px){
+    .hero-img{position:static;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 55%}
+    .hero::after{display:none}
+    .hero-inner{min-height:0;padding:30px 0 40px;background:var(--green-deep)}
+    .hero h1{max-width:18ch}
+  }
+  @media (min-width:620px){
+    .gallery{grid-template-columns:repeat(2,1fr);gap:18px}
+    .area-grid{grid-template-columns:repeat(2,1fr)}
+    .contact-panel{padding:40px 34px}
+    .footer-inner{grid-template-columns:1fr auto;align-items:start}
+    .hero-inner{padding-bottom:56px}
+  }
+  @media (min-width:900px){
+    body{font-size:18px}
+    .nav{display:flex}
+    .header-inner{height:74px}
+    .welcome-grid{grid-template-columns:1.05fr 1fr;gap:52px}
+    .gallery{grid-template-columns:repeat(3,1fr)}
+    .gallery .card:first-child{grid-column:span 2}
+    .gallery .card:first-child img{aspect-ratio:16/9}
+    .area-grid{grid-template-columns:repeat(3,1fr)}
+    .contact-panel{grid-template-columns:1.1fr 1fr;padding:48px 44px;gap:44px}
+    section{padding:86px 0}
+    .hero-inner{min-height:min(84svh,820px)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .card img{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">CG</span>
+      <span class="brand-name">Columbia Gorge Inn</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#rooms">Rooms</a>
+      <a href="#area">The Gorge</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#contact">Book your stay</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-label="Welcome">
+    <img class="hero-img" src="/assets/columbia-gorge-inn/room-queen-navy.jpg" alt="Queen room with a wood headboard, navy accent wall and two bedside lamps" width="1600" height="1200" fetchpriority="high">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Columbia River Gorge &middot; Oregon</p>
+      <h1>A quiet stay in the heart of the Gorge.</h1>
+      <p class="lede">Comfortable single and queen rooms, in-room vanities and a patio at your door — a calm base for days spent at the falls, on the river, and on the trail.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Book your stay — call us</a>
+        <a class="btn btn-ghost" href="#rooms">See the rooms</a>
+      </div>
+      <p class="hero-note">Walk-up rooms &middot; Free parking at your door</p>
+    </div>
+  </section>
+
+  <section class="welcome" id="welcome">
+    <div class="wrap welcome-grid">
+      <div class="welcome-photo">
+        <img src="/assets/columbia-gorge-inn/exterior-unit-15.jpg" alt="Exterior unit entrance with a red door numbered 15 and two patio chairs beside a small side table" width="1600" height="1200" loading="lazy">
+      </div>
+      <div class="welcome-body">
+        <p class="eyebrow">Welcome</p>
+        <h2>Simple, clean rooms — and the Gorge at your doorstep.</h2>
+        <p>Columbia Gorge Inn is a small, independently run motel in the Columbia River Gorge. Rooms are entered from the outside, so you park at your door and step straight in. Each room has its own vanity sink and mirror, and several open onto a private patio with seating.</p>
+        <p>We keep things straightforward: a comfortable bed, a quiet night, and easy access to everything the Gorge is known for. No lobby maze, no long walk with your bags.</p>
+        <ul class="detail-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/></svg><span>Outside-entry rooms</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M4 12V6"/><path d="M20 12v6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><span>Parking at your unit</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></svg><span>Flat-screen TV in rooms</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v11"/><path d="M8 20v-5h8v5"/></svg><span>Vanity sink &amp; mirror</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The rooms</p>
+        <h2>Every room, exactly as it looks.</h2>
+        <p>Real photographs of our rooms — no stock images. Tap any photo to see it larger.</p>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <button class="card" type="button" data-full="/assets/columbia-gorge-inn/room-queen-patio.jpg" data-title="Queen Room with Patio" data-detail="One queen bed, flat-screen TV, sliding doors onto a private patio with seating.">
+          <img src="/assets/columbia-gorge-inn/room-queen-patio-900.jpg" alt="Queen room with a flat-screen television, an armchair, and sliding doors opening to a patio" width="900" height="676" loading="lazy">
+          <span class="card-cap">
+            <span><h3>Queen Room with Patio</h3><p>Queen bed &middot; flat-screen TV &middot; private patio</p></span>
+            <span class="zoom" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg></span>
+          </span>
+        </button>
+
+        <button class="card" type="button" data-full="/assets/columbia-gorge-inn/room-single-navy.jpg" data-title="Single Room" data-detail="One bed, navy accent wall, in-room vanity sink and mirror.">
+          <img src="/assets/columbia-gorge-inn/room-single-navy-900.jpg" alt="Single room with one bed against a navy accent wall, bedside lamps, and an open vanity sink with mirror" width="900" height="676" loading="lazy">
+          <span class="card-cap">
+            <span><h3>Single Room</h3><p>One bed &middot; navy accent wall &middot; vanity sink</p></span>
+            <span class="zoom" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg></span>
+          </span>
+        </button>
+
+        <button class="card" type="button" data-full="/assets/columbia-gorge-inn/room-queen-navy.jpg" data-title="Queen Room" data-detail="One queen bed with a wood headboard, navy accent wall, and bedside lamps.">
+          <img src="/assets/columbia-gorge-inn/room-queen-navy-900.jpg" alt="Queen room with a wood headboard, navy accent wall, two bedside lamps and nightstands" width="900" height="676" loading="lazy">
+          <span class="card-cap">
+            <span><h3>Queen Room</h3><p>Queen bed &middot; wood headboard &middot; navy accent wall</p></span>
+            <span class="zoom" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg></span>
+          </span>
+        </button>
+
+        <button class="card" type="button" data-full="/assets/columbia-gorge-inn/room-queen-vanity.jpg" data-title="Queen Room with Vanity" data-detail="One queen bed, in-room vanity sink and mirror, entry door from the walkway.">
+          <img src="/assets/columbia-gorge-inn/room-queen-vanity-900.jpg" alt="Queen room with a wood headboard, an in-room vanity sink with mirror, and the entry door open" width="900" height="676" loading="lazy">
+          <span class="card-cap">
+            <span><h3>Queen Room with Vanity</h3><p>Queen bed &middot; vanity sink &amp; mirror</p></span>
+            <span class="zoom" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg></span>
+          </span>
+        </button>
+
+        <button class="card" type="button" data-full="/assets/columbia-gorge-inn/exterior-unit-15.jpg" data-title="Outside Your Door" data-detail="Outside-entry units with patio chairs and a side table — park at your door.">
+          <img src="/assets/columbia-gorge-inn/exterior-unit-15-900.jpg" alt="Red door marked 15 with two white patio chairs and a small side table outside the unit" width="900" height="676" loading="lazy">
+          <span class="card-cap">
+            <span><h3>Outside Your Door</h3><p>Patio chairs &middot; outside-entry units</p></span>
+            <span class="zoom" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg></span>
+          </span>
+        </button>
+      </div>
+
+      <p class="rooms-note">Room types shown are described exactly as photographed. Availability, rates and policies are confirmed by phone — see <a href="#contact">contact</a>.</p>
+    </div>
+  </section>
+
+  <section class="area" id="area">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Columbia River Gorge</p>
+        <h2>Why people come here.</h2>
+        <p>The Gorge is a national scenic area along the Columbia River — waterfalls on the Oregon side, wind on the water, and trails in every direction.</p>
+      </div>
+      <div class="area-grid">
+        <article class="area-card">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6"/><path d="M6 21c0-6 2.7-10 6-10s6 4 6 10"/><path d="M4 21h16"/></svg></div>
+          <h3>Multnomah Falls</h3>
+          <p>The Gorge's best-known waterfall, and the historic highway that strings the smaller falls together along the way.</p>
+        </article>
+        <article class="area-card">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M3 12c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M12 3v5"/><path d="M9 5l3-2 3 2"/></svg></div>
+          <h3>Hood River &amp; the wind</h3>
+          <p>Hood River is the West Coast's windsurfing and kiteboarding town — steady summer wind on the river and a walkable downtown.</p>
+        </article>
+        <article class="area-card">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l6-12 4 7 2.5-4L21 20z"/><circle cx="17" cy="6" r="2"/></svg></div>
+          <h3>Hiking &amp; trails</h3>
+          <p>Waterfall trails, ridge climbs and riverside paths — from short family walks to full-day routes above the river.</p>
+        </article>
+      </div>
+      <p class="area-foot">Trail conditions, seasons and drive times vary — ask when you call and we'll point you the right way.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-panel">
+        <div>
+          <p class="eyebrow">Reservations</p>
+          <h2>Book your stay — call us.</h2>
+          <p>We take reservations by phone. Tell us your dates and how many are travelling, and we'll confirm what's open. Room rates and policies are given when you call.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact" data-slot-link="phone">Book your stay — call us</a>
+          </div>
+        </div>
+        <div class="slots">
+          <div class="slot" data-slot="phone">
+            <span class="slot-label">Phone — owner to supply</span>
+            <span class="slot-value">( ___ ) ___ – ____ <span class="hint">replace this line</span></span>
+          </div>
+          <div class="slot" data-slot="address">
+            <span class="slot-label">Address — owner to supply</span>
+            <span class="slot-value">Street, city, Oregon <span class="hint">replace this line</span></span>
+          </div>
+          <div class="slot" data-slot="email">
+            <span class="slot-label">Email — optional, owner to supply</span>
+            <span class="slot-value">your@email.com <span class="hint">or delete this box</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-brand">Columbia Gorge Inn</p>
+      <div class="footer-links">
+        <a href="#rooms">Rooms</a>
+        <a href="#area">The Gorge</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-slots">
+      <div class="footer-slot" data-slot="phone"><b>Phone</b>owner to supply</div>
+      <div class="footer-slot" data-slot="address"><b>Address</b>owner to supply</div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:26px">
+    <p class="footer-legal">&copy; 2026 Columbia Gorge Inn. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Room photo">
+  <button class="lb-btn lb-close" type="button" data-lb="close" aria-label="Close">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" type="button" data-lb="prev" aria-label="Previous photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <button class="lb-btn lb-next" type="button" data-lb="next" aria-label="Next photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+</div>
+
+<script>
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-cap');
+  var idx = 0;
+
+  function show(i) {
+    idx = (i + cards.length) % cards.length;
+    var c = cards[idx];
+    var img = c.querySelector('img');
+    lbImg.src = c.getAttribute('data-full');
+    lbImg.alt = img ? img.alt : '';
+    lbCap.innerHTML = '';
+    var t = document.createElement('strong');
+    t.textContent = c.getAttribute('data-title') || '';
+    var d = document.createElement('span');
+    d.textContent = c.getAttribute('data-detail') || '';
+    lbCap.appendChild(t);
+    lbCap.appendChild(d);
+  }
+  function open(i) {
+    show(i);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('[data-lb="close"]').focus();
+  }
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    if (cards[idx]) cards[idx].focus();
+  }
+
+  cards.forEach(function (c, i) {
+    c.addEventListener('click', function () { open(i); });
+  });
+  lb.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-lb]');
+    if (!t) { if (e.target === lb) close(); return; }
+    var a = t.getAttribute('data-lb');
+    if (a === 'close') close();
+    if (a === 'prev') show(idx - 1);
+    if (a === 'next') show(idx + 1);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+
+  // Placeholder phone link: keep the CTA inert until the owner supplies a number.
+  document.querySelectorAll('[data-slot-link="phone"]').forEach(function (a) {
+    a.setAttribute('aria-disabled', 'true');
+    a.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+})();
+</script>
+</body>
+</html>
